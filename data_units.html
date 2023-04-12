@@ -3,8 +3,7 @@
 
 <head>
     <title>Units Conversion</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
+    <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
@@ -20,9 +19,151 @@
             </nav>
         </div>
     </header>
-   
+    <h1>Data Units Conversion</h1>
+    <div class="container">
 
+        <label for="fromUnit">From:</label>
+        <select class="SelectU" id="fromUnit">
+            <option value="bit">Bit</option>
+            <option value="byte">Byte</option>
+            <option value="kilobyte">KiloByte</option>
+            <option value="megabyte">MegaByte</option>
+            <option value="gigabyte">GigaByte</option>
+        </select>
+        <input class="inputC" type="number" id="fromValue" placeholder="Enter value" step="0.01" />
+
+        <label for="toUnit">To:</label>
+        <select class="SelectU" id="toUnit">
+            <option value="bit">Bit</option>
+            <option value="byte">Byte</option>
+            <option value="kilobyte">KiloByte</option>
+            <option value="megabyte">MegaByte</option>
+            <option value="gigabyte">GigaByte</option>
+        </select>
+        <input class="inputC" type="number" id="toValue" placeholder="Converted value" step="0.01" readonly />
+        <br>
+        <br>
+        <button id="convertButton" class="buttonC">Convert</button>
+        <p class="resultT" id="resultText"></p>
+    </div>
+
+
+    <script>
+        document
+            .getElementById("convertButton")
+            .addEventListener("click", function () {
+                var fromUnit = document.getElementById("fromUnit").value;
+                var toUnit = document.getElementById("toUnit").value;
+                var fromValue = document.getElementById("fromValue").value;
+                var toValue = document.getElementById("toValue");
+                if (fromUnit === toUnit) {
+                    toValue.value = fromValue;
+                    document.getElementById("resultText").textContent =
+                        "No conversion needed.";
+                    return;
+                }
+                var conversionFactors = {
+                    bit: {
+                        byte: 0.125,
+                        kilobyte: 0.000125,
+                        megabyte: 0.000000125,
+                        gigabyte: 0.000000000125,
+                    },
+                    byte: {
+                        bit: 8,
+                        kilobyte: 0.001,
+                        megabyte: 0.000001,
+                        gigabyte: 0.000000001,
+                    },
+                    kilobyte: {
+                        bit: 8000,
+                        byte: 1000,
+                        megabyte: 0.001,
+                        gigabyte: 0.000001,
+                    },
+                    megabyte: {
+                        bit: 8000000,
+                        byte: 1000000,
+                        kilobyte: 1000,
+                        gigabyte: 0.001,
+                    },
+                    gigabyte: {
+                        bit: 8000000000,
+                        byte: 1000000000,
+                        kilobyte: 1000000,
+                        megabyte: 1000,
+                    },
+                };
+                if (
+                    fromUnit in conversionFactors &&
+                    toUnit in conversionFactors[fromUnit]
+                ) {
+                    var convertedValue;
+                    var fromUnit = document.getElementById("fromUnit").value;
+                    var toUnit = document.getElementById("toUnit").value;
+                    var fromValue = document.getElementById("fromValue").value;
+                    var toValue = document.getElementById("toValue");
+                    if (fromUnit === toUnit) {
+                        toValue.value = fromValue;
+                        document.getElementById("resultText").textContent =
+                            "No conversion needed.";
+                        return;
+                    }
+                    var conversionFactors = {
+                        bit: {
+                            byte: 0.125,
+                            kilobyte: 0.000125,
+                            megabyte: 0.000000125,
+                            gigabyte: 0.000000000125,
+                        },
+                        byte: {
+                            bit: 8,
+                            kilobyte: 0.001,
+                            megabyte: 0.000001,
+                            gigabyte: 0.000000001,
+                        },
+                        kilobyte: {
+                            bit: 8000,
+                            byte: 1000,
+                            megabyte: 0.001,
+                            gigabyte: 0.000001,
+                        },
+                        megabyte: {
+                            bit: 8000000,
+                            byte: 1000000,
+                            kilobyte: 1000,
+                            gigabyte: 0.001,
+                        },
+                        gigabyte: {
+                            bit: 8000000000,
+                            byte: 1000000000,
+                            kilobyte: 1000000,
+                            megabyte: 1000,
+                        },
+                    };
+                    if (
+                        fromUnit in conversionFactors &&
+                        toUnit in conversionFactors[fromUnit]
+                    ) {
+                        var convertedValue =
+                            fromValue * conversionFactors[fromUnit][toUnit];
+                        toValue.value = convertedValue;
+                        document.getElementById("resultText").textContent =
+                            fromValue +
+                            " " +
+                            fromUnit +
+                            " is equal to " +
+                            convertedValue +
+                            " " +
+                            toUnit +
+                            ".";
+                    } else {
+                        document.getElementById("resultText").textContent =
+                            "Invalid units selected.";
+                    }
+                }
+            });
+    </script>
 </body>
 
 </html>
-

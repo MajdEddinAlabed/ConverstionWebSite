@@ -59,6 +59,15 @@ header {
   border-radius: 100px;
 }
 
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
 .buttonContainer {
   margin-top: 100px;
   text-align: center;
@@ -81,6 +90,25 @@ header {
   box-shadow: 5px 5px 14px rgba(255, 255, 255, 0.3);
   filter: blur(0);
   transition: filter 0.3s ease-in-out;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .button:hover {
@@ -143,6 +171,14 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+.resultT {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
 h2 {
   text-align: center;
 }
@@ -151,6 +187,7 @@ h4 {
   text-align: center;
   color: rgba(255, 255, 255, 0.85);
 }
+
 .red {
   color: red;
 }
@@ -189,17 +226,39 @@ h4 {
   margin: 20px 0;
   width: 150px;
 }
+
 .lineU {
   border-bottom: 2px solid #fff;
   margin: 5px auto;
   width: 125px;
 }
+
 .OtherOp {
-  margin-left: 27%;
+  margin-left: 100px;
 }
-.h2 {
+
+.contactUsInfo {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
   font-size: 30px;
 }
+
 ul[class="WebMail"] {
   font-size: 24px;
+}
+
+.container {
+  padding: 50px;
+}
+
+.SelectU {
+  width: 100px;
+}
+.inputC {
+  width: 150px;
+}
+.buttonC {
+  width: 250px;
 }
